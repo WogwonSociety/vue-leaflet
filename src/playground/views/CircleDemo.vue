@@ -10,7 +10,7 @@
   </l-map>
 </template>
 <script lang="ts">
-import { LCircle, LMap, LTileLayer } from "@src/components";
+import { LCircle, LMap, LTileLayer } from "@/components";
 
 export default {
   components: {

@@ -1,23 +1,30 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "tests/**/*"],
   "exclude": ["./dist/**/*"],
   "compilerOptions": {
+    "target": "ES2015",
+    "moduleResolution": "nodenext",
     "allowJs": false,
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@plugins/*": ["./src/plugins/*"],
+      "@store/*": ["./src/store/*"],
+      "@/utils": ["./src/utils"]
     },
     "types": [
       "node",
+      "@types/node"
     ],
     "outDir": "./dist",
-    "noImplicitAny": false
-  },
-
-  "references": [
-    {
-      "path": "./tsconfig.config.json"
-    }
-  ]
+    "noImplicitAny": false,
+    "strict": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  }
 }

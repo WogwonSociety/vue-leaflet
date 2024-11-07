@@ -1,4 +1,4 @@
-import type L from "leaflet";
+import type * as L from "leaflet";
 import { type PropType, type Ref, h, onUnmounted, provide } from "vue";
 
 import {
@@ -8,8 +8,8 @@ import {
   RemoveLayerInjection,
   UnbindPopupInjection,
   UnbindTooltipInjection,
-} from "@src/types/injectionKeys";
-import { assertInject, isFunction, propsToLeafletOptions } from "@src/utils";
+} from "@/types/injectionKeys";
+import { assertInject, isFunction, propsToLeafletOptions } from "@/utils";
 
 import type { LayerType } from "../types/enums/LayerType";
 import { componentProps, setupComponent } from "./component";

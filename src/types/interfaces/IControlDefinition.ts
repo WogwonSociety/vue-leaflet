@@ -1,4 +1,4 @@
-import type L from "leaflet";
+import type * as L from "leaflet";
 
 export interface IControlDefinition<T extends L.Control = L.Control> {
   leafletObject: T;

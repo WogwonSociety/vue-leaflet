@@ -27,9 +27,9 @@
   </div>
 </template>
 <script lang="ts">
-import type L from "leaflet";
+import type * as L from "leaflet";
 
-import { LIcon, LMap, LMarker, LTileLayer } from "@src/components";
+import { LIcon, LMap, LMarker, LTileLayer } from "@/components";
 
 export default {
   components: {

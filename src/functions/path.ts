@@ -1,8 +1,8 @@
-import type L from "leaflet";
+import type * as L from "leaflet";
 import { onBeforeUnmount } from "vue";
 
-import { RemoveLayerInjection } from "@src/types/injectionKeys";
-import { assertInject, propsToLeafletOptions } from "@src/utils";
+import { RemoveLayerInjection } from "@/types/injectionKeys";
+import { assertInject, propsToLeafletOptions } from "@/utils";
 
 import {
   interactiveLayerProps,

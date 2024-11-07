@@ -1,5 +1,5 @@
 <script lang="ts">
-import type L from "leaflet";
+import type * as L from "leaflet";
 import { debounce } from "ts-debounce";
 import {
   type PropType,
@@ -15,20 +15,20 @@ import {
   ref,
 } from "vue";
 
-import { componentProps, setupComponent } from "@src/functions/component";
+import { componentProps, setupComponent } from "@/functions/component";
 import {
   AddLayerInjection,
   RegisterControlInjection,
   RegisterLayerControlInjection,
   RemoveLayerInjection,
   UseGlobalLeafletInjection,
-} from "@src/types/injectionKeys";
+} from "@/types/injectionKeys";
 import type {
   IControlDefinition,
   ILayerDefinition,
   IMapBlueprint,
   IMapOptions,
-} from "@src/types/interfaces";
+} from "@/types/interfaces";
 import {
   type Data,
   WINDOW_OR_GLOBAL,
@@ -40,7 +40,7 @@ import {
   remapEvents,
   resetWebpackIcon,
   updateLeafletWrapper,
-} from "@src/utils.js";
+} from "@/utils.js";
 
 type StyleableAttrs = Data & { style: Data };
 
@@ -160,7 +160,13 @@ const mapProps = {
 
 export default defineComponent({
   inheritAttrs: false,
-  emits: ["ready", "update:zoom", "update:center", "update:bounds"],
+  emits: [
+    "ready",
+    "update:zoom",
+    "update:center",
+    "update:bounds",
+    "mousemove",
+  ],
   props: mapProps,
   setup(props, context) {
     const root = ref<HTMLElement>();
@@ -168,6 +174,11 @@ export default defineComponent({
       ready: false,
       layersToAdd: [],
       layersInControl: [],
+    });
+
+    const mouseCoords = ref<{ lat: number | null; lng: number | null }>({
+      lat: null,
+      lng: null,
     });
 
     const { options: componentOptions } = setupComponent(props);
@@ -243,6 +254,16 @@ export default defineComponent({
         if (layer) {
           layer.updateVisibleProp(false);
         }
+      },
+      mousemove(ev) {
+        if (!blueprint.leafletRef) return; // should not happen.
+
+        mouseCoords.value = {
+          lat: ev.latlng.lat,
+          lng: ev.latlng.lng,
+        };
+
+        context.emit("mousemove", mouseCoords.value);
       },
     };
 
@@ -400,7 +421,7 @@ export default defineComponent({
     const leafletObject = computed(() => blueprint.leafletRef);
     const ready = computed(() => blueprint.ready);
 
-    return { root, ready, leafletObject, attrs };
+    return { root, ready, leafletObject, mouseCoords, attrs };
   },
   render({ attrs }: { attrs: StyleableAttrs }) {
     if (!attrs.style) attrs.style = {};

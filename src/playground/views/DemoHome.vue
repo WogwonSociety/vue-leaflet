@@ -8,7 +8,7 @@
   </l-map>
 </template>
 <script lang="ts">
-import { LMap, LTileLayer } from "@src/components";
+import { LMap, LTileLayer } from "@/components";
 
 export default {
   components: {

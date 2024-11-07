@@ -75,7 +75,7 @@ import {
   LPopup,
   LRectangle,
   LTileLayer,
-} from "@src/components";
+} from "@/components";
 
 export default {
   components: {

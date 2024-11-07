@@ -1,8 +1,8 @@
-import type L from "leaflet";
+import type * as L from "leaflet";
 import { type PropType, onUnmounted } from "vue";
 import { type VNode, h, render } from "vue";
 
-import { propsToLeafletOptions } from "@src/utils";
+import { propsToLeafletOptions } from "@/utils";
 
 import { layerProps, setupLayer } from "./layer";
 

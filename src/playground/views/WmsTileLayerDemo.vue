@@ -14,7 +14,7 @@
   </l-map>
 </template>
 <script lang="ts">
-import { LMap, LWmsTileLayer } from "@src/components";
+import { LMap, LWmsTileLayer } from "@/components";
 
 export default {
   components: {

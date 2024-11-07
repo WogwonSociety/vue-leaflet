@@ -1,5 +1,5 @@
 <script lang="ts">
-import type L from "leaflet";
+import type * as L from "leaflet";
 import { debounce } from "ts-debounce";
 import {
   defineComponent,
@@ -12,19 +12,15 @@ import {
   ref,
 } from "vue";
 
-import { render } from "@src/functions/layer";
-import {
-  markerProps,
-  setupMarker,
-  shouldBlankIcon,
-} from "@src/functions/marker";
+import { render } from "@/functions/layer";
+import { markerProps, setupMarker, shouldBlankIcon } from "@/functions/marker";
 import {
   AddLayerInjection,
   CanSetParentHtmlInjection,
   SetIconInjection,
   SetParentHtmlInjection,
   UseGlobalLeafletInjection,
-} from "@src/types/injectionKeys";
+} from "@/types/injectionKeys";
 import {
   WINDOW_OR_GLOBAL,
   assertInject,
@@ -32,7 +28,7 @@ import {
   isFunction,
   propsBinder,
   remapEvents,
-} from "@src/utils.js";
+} from "@/utils.js";
 
 /**
  * Marker component, lets you add and personalize markers on the map
@@ -49,7 +45,7 @@ export default defineComponent({
 
     provide(
       CanSetParentHtmlInjection,
-      () => !!leafletObject.value?.getElement()
+      () => !!leafletObject.value?.getElement(),
     );
     provide(SetParentHtmlInjection, (html: string) => {
       const el =
@@ -60,8 +56,8 @@ export default defineComponent({
     });
     provide(
       SetIconInjection,
-      (newIcon: L.DivIcon | L.Icon) =>
-        leafletObject.value?.setIcon && leafletObject.value.setIcon(newIcon)
+      (newIcon: L.DivIcon | L.Icon | undefined) =>
+        leafletObject.value?.setIcon && leafletObject.value.setIcon(newIcon!),
     );
     const { options, methods } = setupMarker(props, leafletObject, context);
 

@@ -1,4 +1,4 @@
-import type L from "leaflet";
+import type * as L from "leaflet";
 import type { InjectionKey } from "vue";
 
 import type { IControlDefinition, ILayerDefinition } from "./interfaces";

@@ -18,7 +18,7 @@
   </l-map>
 </template>
 <script lang="ts">
-import { LMap, LPolyline, LTileLayer } from "@src/components";
+import { LMap, LPolyline, LTileLayer } from "@/components";
 
 export default {
   components: {

@@ -1,7 +1,7 @@
-import type L from "leaflet";
+import type * as L from "leaflet";
 import type { PropType } from "vue";
 
-import { propsToLeafletOptions } from "@src/utils";
+import { propsToLeafletOptions } from "@/utils";
 
 import { polygonProps, setupPolygon } from "./polygon";
 

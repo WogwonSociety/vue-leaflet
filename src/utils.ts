@@ -1,4 +1,4 @@
-import type L from "leaflet";
+import type * as L from "leaflet";
 import { type InjectionKey, inject, provide, ref, watch } from "vue";
 
 export declare type Data = Record<string, unknown>;

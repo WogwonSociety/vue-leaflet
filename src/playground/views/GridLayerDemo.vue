@@ -9,7 +9,7 @@
 <script lang="ts">
 import { h } from "vue";
 
-import { LGridLayer, LMap, LTileLayer } from "@src/components";
+import { LGridLayer, LMap, LTileLayer } from "@/components";
 
 export default {
   components: {

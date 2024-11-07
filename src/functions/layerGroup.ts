@@ -1,11 +1,11 @@
-import type L from "leaflet";
+import type * as L from "leaflet";
 import { provide } from "vue";
 
 import {
   AddLayerInjection,
   RemoveLayerInjection,
-} from "@src/types/injectionKeys";
-import { propsToLeafletOptions } from "@src/utils";
+} from "@/types/injectionKeys";
+import { propsToLeafletOptions } from "@/utils";
 
 import { layerProps, setupLayer } from "./layer";
 
